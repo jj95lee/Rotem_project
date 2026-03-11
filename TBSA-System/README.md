@@ -12,7 +12,6 @@ project/
 ├── config.py                       # 전역 설정 관리
 ├── requirements.txt                # 의존성 목록
 ├── server.ipynb                    # Flase 서버 (로그 확인용)
-├── README.md                       # README
 │
 ├── images/                         # README.md 전용 이미지 폴더
 │
