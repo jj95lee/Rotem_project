@@ -8,7 +8,7 @@ Unity 시뮬레이터 기반 전차 자율주행 시스템
 ## 📁 프로젝트 구조
 
 ```
-tank_rl/
+tank/
 ├── rl_environment.py      # Gymnasium 환경 (학습용)
 ├── rl_controller.py       # RL 컨트롤러 (추론용)
 ├── train_rl.py            # 학습 스크립트
