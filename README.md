@@ -9,15 +9,16 @@ Unity 시뮬레이터 기반 전차 자율주행 시스템
 
 ```
 tank/
-├── rl_environment.py      # Gymnasium 환경 (학습용)
-├── rl_controller.py       # RL 컨트롤러 (추론용)
-├── train_rl.py            # 학습 스크립트
-├── server_rl.py           # Flask 서버 (시뮬레이터 연동)
-└── env_data/              # 학습 환경 데이터
-  ├── ob_v2.json           # 장애물 데이터
-  ├── height_map.npy       # 높이 맵
-  └── slope_costmap.npy    # 경사도 맵
-└── models/                # 학습된 모델 저장 위치
+├── rl_controller.py             # RL 컨트롤러 (추론용)
+├── rl_environment.py            # Gymnasium 환경 (학습용)
+├── server_rl.py                 # Flask 서버 (시뮬레이터 연동)
+├── train_rl.py                  # 학습 스크립트
+├── visualization_callback.py    # 스타일 시각화
+└── env_data/                    # 학습 환경 데이터
+  ├── height_map.npy             # 높이 맵
+  ├── ob_v2.json                 # 장애물 데이터
+  └── slope_costmap.npy          # 경사도 맵
+└── models/                      # 학습된 모델 저장 위치
     └── tank_nav_final.zip
 ```
 
