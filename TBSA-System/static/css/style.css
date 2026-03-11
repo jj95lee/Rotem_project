@@ -1,0 +1,467 @@
+/* style.css - 최종 버전 */
+* { box-sizing: border-box; }
+body {
+    height: 100vh; 
+    margin: 0;
+    padding: 10px; 
+    display: flex; 
+    flex-direction: column; 
+    overflow: hidden;
+    font-family: 'Segoe UI', Arial; 
+    background: #1a1a1a; 
+    color: #fff;
+}
+h2 { color: #4CAF50; margin-bottom: 15px; margin-top: 0; }
+
+.card { border: 1px solid #333; border-radius: 8px; padding: 10px; background: #2a2a2a; display: flex; flex-direction: column; }
+.title { font-weight: bold; margin-bottom: 10px; color: #4CAF50; border-bottom: 1px solid #444; padding-bottom: 5px; font-size: 0.95em; display: flex; align-items: center; }
+img { width: 100%; height: auto; border-radius: 5px; background: #000; object-fit: contain; }
+pre { background: #0a0a0a; color: #0f0; padding: 10px; border-radius: 5px; overflow: auto; font-size: 11px; margin: 0; flex: 1; }
+
+#msg-banner { 
+    background: #4CAF50; color: white; padding: 6px; 
+    border-radius: 8px; font-weight: bold; font-size: 1.1em;
+    margin-bottom: 8px; text-align: center; border: 2px solid #2e7d32;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* SEQ 선택 버튼 */
+.seq-selector {
+    display: flex; gap: 10px; margin-bottom: 8px; align-items: center;
+    background: #2a2a2a; padding: 6px; border-radius: 8px; border: 1px solid #333;
+}
+.seq-selector label { font-weight: bold; color: #4CAF50; margin-right: 5px; }
+
+/* SEQ 상태 표시 */
+.seq-display {
+    padding: 8px 16px;
+    border: 2px solid #444;
+    border-radius: 5px;
+    background: #1a1a1a;
+    color: #fff;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+.seq-display.seq-1, .seq-display.seq-3 { background: #4CAF50; border-color: #4CAF50; }
+.seq-display.seq-2 { background: #f44336; border-color: #f44336; }
+.seq-display.seq-4 { background: #9C27B0; border-color: #9C27B0; }
+
+.seq-btn {
+    padding: 8px 16px; border: 2px solid #444; border-radius: 5px;
+    background: #1a1a1a; color: #fff; font-weight: bold; cursor: pointer; transition: all 0.2s;
+}
+.seq-btn:hover { background: #333; border-color: #666; }
+
+/* 활성화 상태 색상 */
+.seq-btn.active { border-color: #fff; box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+.seq-btn[data-seq="1"].active, .seq-btn[data-seq="3"].active { background: #4CAF50; border-color: #4CAF50; }
+.seq-btn[data-seq="2"].active { background: #f44336; border-color: #f44336; }
+.seq-btn[data-seq="4"].active { background: #9C27B0; border-color: #9C27B0; }
+
+/* 전투 모드 표시 */
+.combat-mode-info {
+    margin-left: auto;
+    padding: 8px 15px;
+    background: #1a1a1a;
+    border-radius: 5px;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mode-badge {
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.mode-scan {
+    background: #2196F3;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+.mode-standby {
+    background: #4CAF50;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.mode-fire {
+    background: #f44336;
+    color: #fff;
+    animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 10px rgba(244, 67, 54, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(244, 67, 54, 0.8); }
+}
+
+/* 위치 정보 패널 */
+.position-panel { display: flex; gap: 10px; margin-bottom: 8px; }
+.position-panel.hidden { display: none; }
+.pos-card { flex: 1; background: #2a2a2a; padding: 8px; border-radius: 5px; border: 1px solid #333; }
+.pos-card.current { border-left: 3px solid #2196F3; }
+.pos-card.dest { border-left: 3px solid #FF9800; }
+.pos-card.path { border-left: 3px solid #4CAF50; }
+.pos-label { color: #888; font-size: 0.8em; text-transform: uppercase; }
+.pos-value { color: #0f0; font-weight: bold; font-size: 1em; }
+
+/* 목적지 입력 패널 */
+.destination-panel { display: none; align-items: center; background: #2a2a2a; padding: 12px; border-radius: 8px; margin-bottom: 8px; border: 1px solid #333; gap: 10px; }
+.destination-panel.active { display: flex; }
+.set-dest-btn { padding: 8px 15px; border: none; border-radius: 5px; background: #4CAF50; color: #fff; font-weight: bold; cursor: pointer; }
+.quick-btn { padding: 8px 12px; border: 1px solid #444; border-radius: 5px; background: #333; color: #eee; cursor: pointer; font-size: 0.85em; }
+.quick-btn:hover { background: #444; color: #fff; }
+
+/* 레이아웃 */
+.layout-content { flex: 1; min-height: 0; display: none; }
+.layout-content.active { display: block; height: 100%; }
+
+/* SEQ 1/3 최종 레이아웃: 메인(캔버스) + 우측(로그) */
+.nav-container-final {
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    gap: 10px;
+    height: 100%;
+}
+
+.nav-main-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.main-card-v2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.main-card-v2 .title {
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+.path-canvas-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+}
+
+.pip-overlay {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        width: 280px;      /* 너무 작지 않게 설정 */
+        height: auto;
+        border: 2px solid #4CAF50; /* 테두리로 구분감 주기 */
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.7); /* 배경을 반투명 검정으로 */
+        z-index: 10;       /* 메인 이미지 위에 뜨도록 설정 */
+        box-shadow: 0 0 10px rgba(0,0,0,0.8);
+        transition: opacity 0.3s;
+    }
+    
+    .pip-overlay:hover {
+        opacity: 0.3; /* 마우스 올리면 투명해져서 뒤에 가려진 메인 화면 보기 */
+    }
+
+#pathCanvas {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.nav-right-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.log-card-v2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.log-card-v2 .title {
+    flex-shrink: 0;
+    margin-bottom: 10px;
+}
+
+#driving-log {
+    flex: 1;
+    overflow-y: auto;
+    background: #0a0a0a;
+    color: #0f0;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    margin: 0;
+}
+
+.header-info-group {
+    margin-left: auto; /* 우측 정렬 */
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    font-size: 0.9em;
+    background: #1a1a1a;
+    padding: 5px 15px;
+    border-radius: 5px;
+    border: 1px solid #444;
+}
+
+.header-label {
+    color: #888;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.header-value {
+    color: #0f0; /* 밝은 녹색 */
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+/* SEQ 2 레이아웃 */
+.combat-container {
+    display: grid;
+    /* 7:3 비율로 배분 */
+    grid-template-columns: 7fr 3fr; 
+    gap: 10px;
+    height: 100%;
+}
+.combat-main-view { height: 100%; }
+.combat-overlay-card { height: 100%; }
+.combat-overlay-card img { flex: 1; max-height: calc(100% - 40px); }
+.combat-sidebar { display: flex; flex-direction: column; gap: 10px; overflow-y: auto; height: 100%; }
+
+.target-list { flex: 1; overflow-y: auto; min-height: 100px; }
+
+.target-item { 
+    background: #1a1a1a; 
+    padding: 8px; 
+    margin-bottom: 5px; 
+    border-radius: 4px; 
+    border-left: 3px solid #555; 
+    font-size: 0.9em;
+    transition: all 0.2s ease;
+}
+
+.target-item.locked { 
+    border-left-color: #4CAF50; 
+    background: #1a2a1a; 
+}
+
+.target-item.target-locked { 
+    border-left-color: #f44336; 
+    background: #2a1a1a; 
+    border-left-width: 4px;
+    box-shadow: 0 0 8px rgba(244, 67, 54, 0.3);
+    animation: target-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes target-pulse {
+    0%, 100% { 
+        background: #2a1a1a;
+        box-shadow: 0 0 8px rgba(244, 67, 54, 0.3);
+    }
+    50% { 
+        background: #3a1a1a;
+        box-shadow: 0 0 12px rgba(244, 67, 54, 0.5);
+    }
+}
+
+/* 액션 버튼 */
+.action-buttons-grid {
+    display: grid;
+    /* 기존 1fr 1fr에서 1fr 1fr 1fr (또는 repeat(3, 1fr))로 변경 */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 5px;            /* 버튼 사이 간격을 약간 좁힘 */
+    margin-bottom: 10px;
+}
+
+.action-btn {
+    padding: 10px 4px;   /* 좌우 패딩을 줄여 텍스트 공간 확보 */
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid transparent;
+    font-size: 1.15em;   /* 3개가 나란히 들어가도록 폰트 크기 조절 */
+    transition: all 0.2s;
+    white-space: nowrap; /* 텍스트가 아래로 밀리지 않게 설정 */
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 공격 대기 (STANDBY) 버튼 */
+.standby-btn {
+    background: #4CAF50;
+    color: #fff;
+    border-color: #388E3C;
+}
+.standby-btn:hover:not(:disabled) {
+    background: #45a049;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+.standby-btn.active-mode {
+    background: #2E7D32;
+    border-color: #1B5E20;
+}
+
+/* 타겟 재탐색 (RE-SCAN) 버튼 */
+.rescan-btn {
+    background: #2196F3;
+    color: #fff;
+    border-color: #1976D2;
+}
+.rescan-btn:hover:not(:disabled) {
+    background: #1e88e5;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+}
+
+/* 후퇴 (RETREAT) 버튼 */
+.retreat-btn {
+    background: #FF9800;
+    color: #fff;
+    border-color: #F57C00;
+}
+.retreat-btn:hover:not(:disabled) {
+    background: #fb8c00;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.5);
+}
+
+/* FIRE 버튼 */
+.fire-btn {
+    background: #444;
+    color: #888;
+    border-color: #333;
+    grid-column: 1 / -1; /* 3개의 열을 모두 차지하도록 수정 */
+    padding: 15px;
+    font-size: 1.1em;
+    margin-top: 5px;     /* 위쪽 버튼들과의 간격 확보 */
+}
+
+.fire-btn.ready {
+    background: #f44336;
+    color: #fff;
+    border-color: #d32f2f;
+    animation: fire-blink 0.8s infinite;
+}
+
+.fire-btn.ready:hover {
+    background: #e53935;
+    box-shadow: 0 0 20px rgba(244, 67, 54, 0.7);
+}
+
+@keyframes fire-blink {
+    0%, 100% { 
+        opacity: 1;
+        box-shadow: 0 0 10px rgba(244, 67, 54, 0.5);
+    }
+    50% { 
+        opacity: 0.85;
+        box-shadow: 0 0 20px rgba(244, 67, 54, 0.8);
+    }
+}
+
+/* 액션 상태 표시 */
+.action-status {
+    padding: 8px;
+    background: #1a1a1a;
+    border-radius: 4px;
+    text-align: center;
+}
+
+/* SEQ 4 레이아웃 - 1인칭 전방뷰 */
+#autonomous-layout.active { display: flex; height: 100%; }
+#autonomous-layout .nav-container-final {
+    grid-template-columns: 1fr 240px;
+    height: 100%;
+}
+
+#autonomous-layout .nav-main-section { height: 100%; }
+#autonomous-layout .main-card-v2 { height: 100%; }
+#autonomous-layout .path-canvas-container { height: 100%; min-height: 0; }
+
+#seq4Canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 5px;
+}
+
+/* LiDAR 통계 행 스타일 */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #333;
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-row .label {
+    color: #888;
+    font-size: 0.9em;
+}
+
+.stat-row .value {
+    color: #0f0;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+/* LiDAR 스캔 펄스 애니메이션 */
+@keyframes scanPulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+}
+
+.scan-effect {
+    animation: scanPulse 2s ease-in-out infinite;
+}
+
+/* 장애물 발견 글로우 효과 */
+@keyframes discoverGlow {
+    0% {
+        filter: drop-shadow(0 0 20px yellow);
+        transform: scale(1.1);
+    }
+    100% {
+        filter: drop-shadow(0 0 0 transparent);
+        transform: scale(1);
+    }
+}
+
+/* SEQ4 로그 스타일 */
+#seq4-log {
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    line-height: 1.4;
+}
+
+.obstacle-list { flex: 1; overflow-y: auto; background: #1a1a1a; border-radius: 5px; padding: 5px; }
+.obstacle-item { font-size: 0.85em; padding: 4px 8px; border-bottom: 1px solid #333; color: #ffeb3b; }
