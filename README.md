@@ -1,5 +1,5 @@
-# TBSA-System
-TBSA (Tank Battlefield Situational Awareness System) Project
+# HyundaiRotem_project
+K-방산 스마트 AI 모델링 과정 - 전차주변 전장상황인식 학습모델
 
 ## 프로젝트 소개 자료
 [WIKI로 이동](https://github.com/jj95lee/Rotem_project/wiki)
