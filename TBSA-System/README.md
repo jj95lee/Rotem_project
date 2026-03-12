@@ -2,7 +2,7 @@
 TBSA (Tank Battlefield Situational Awareness System) Project
 
 ## 프로젝트 소개 자료
-[WIKI로 이동](https://github.com/hmstellaj/TBSA-System/wiki)
+[WIKI로 이동](https://github.com/jj95lee/Rotem_project/wiki)
 
 ## 프로젝트 구조
 
@@ -59,7 +59,7 @@ project/
 | 이름 | 담당 | Contact |
 |------|------|------|
 | 이진진 | 프로젝트 총 조율, LiDAR 거리 탐지 모듈 개발 | jj95lee@yonsei.ac.kr |
-| 김형규 | 강화학습 기반 자율 주행 구현, LiDAR 데이터 전처리, Unity 환경 4분할 멀티 카메라 구현| @sincerite0922 |
+| 김형규 | 강화학습 기반 자율 주행 구현, LiDAR 데이터 전처리, Unity 환경 4분할 멀티 카메라 구현| @sincerite0922 | [@sincerite0922]([https://github.com/jj95lee/Rotem_project/wiki](https://github.com/sincerite0922))
 | 박승훈 | 객체 인식 모델 학습, 포격 파라미터 설정 및 조준 제어, 영상 제작 | tmdgns0213@gmail.com |
 | 이주혁 | 객체 인식 모델 학습, 영상 제작 | juhyeok.lee0314@gmail.com |
 | 이진행 | 카메라-LiDAR 센서퓨전 구현, 전차 상황 인식 모듈 개발 | @playlee1026-cyber |
